@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
 
+import People from './People'
+
 class App extends Component {
 
+//do I need this state here? What do I do with it?
 	state = {
 		people: [],
 		myLat: '',
@@ -24,17 +27,6 @@ class App extends Component {
 				myLon: location.coords.longitude
 			})
 		})
-	}
-
-	getPeopleInSpace = () => {
-		const url = "http://api.open-notify.org/astros.json"
-
-		axios.get(url)
-			.then(res => {
-				this.setState({
-					people: res.data.people
-				})
-			})
 	}
 
 	getCountry = () => {
@@ -103,7 +95,6 @@ class App extends Component {
 
 		axios.get(passUrl, { params })
 			.then(res => {
-				console.log(res)
 				this.setState({
 					passGeolocation: res.data.response[0].risetime
 				})
@@ -112,12 +103,11 @@ class App extends Component {
 
 	}
 
-//separate into components later
+//do I need that const?
   render() {
   	this.getGeolocation()
   	const { people, latIss, lonIss, country, ocean, passGeolocation, localTime } = this.state
 	
-
     return (
    
       <div className="App">
@@ -125,12 +115,8 @@ class App extends Component {
         <h1>Where [over] the world is the ISS?</h1>
 
         <p>The International Space Station (ISS) orbits this great blue Earth at around 7.66km per second. It orbits the Earth once every 92 minutes.</p>
-        <button onClick={ this.getPeopleInSpace }>Who's in space?</button>
 
-        <div>
-        	{ people.map(person => <p key={ person.name }>{ person.name }</p>) }
-       		<div>There are <span> { people.length }</span> people on the ISS right now.</div>
-        </div>
+        <People />
 
         <button onClick={ this.handleGetPosition }>See where it is now!</button>
         <div>
