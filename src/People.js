@@ -7,6 +7,10 @@ export default class People extends React.Component {
 		people: []
 	}
 
+	componentWillMount = () => {
+		this.getPeopleInSpace()
+	}
+
 	getPeopleInSpace = () => {
 		const url = "http://api.open-notify.org/astros.json"
 
@@ -23,19 +27,16 @@ export default class People extends React.Component {
 
 		return (
 			<div>
-				<button onClick={ this.getPeopleInSpace }>
-					Who's in space?
-				</button>
+				<h2>Who's in space?</h2>
+				<div>
+	       			There are currently <span> { people.length }</span> people on the ISS right now.
+	       		</div>
 
 		        <div>
 		        	{ people.map(person => 
 		        		<p key={ person.name }>{ person.name }</p>
 		        	) }
 		        </div>
-
-	       		<div>
-	       			There are <span> { people.length }</span> people on the ISS right now.
-	       		</div>
 		    </div>
 		)
 	}

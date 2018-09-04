@@ -6,9 +6,7 @@ import People from './People'
 
 class App extends Component {
 
-//do I need this state here? What do I do with it?
 	state = {
-		people: [],
 		myLat: '',
 		myLon: '',
 		latIss: '',
@@ -103,10 +101,9 @@ class App extends Component {
 
 	}
 
-//do I need that const?
   render() {
   	this.getGeolocation()
-  	const { people, latIss, lonIss, country, ocean, passGeolocation, localTime } = this.state
+  	const { latIss, lonIss, country, ocean, passGeolocation, localTime } = this.state
 	
     return (
    
@@ -120,8 +117,8 @@ class App extends Component {
 
         <button onClick={ this.handleGetPosition }>See where it is now!</button>
         <div>
-        	<p>Lat: { latIss }</p>
-        	<p>Lon: { lonIss }</p>
+        	<p>Latitude: { latIss }</p>
+        	<p>Longitude: { lonIss }</p>
         	<p>Currently over: { country ? country : ocean }</p>
         </div>
 
