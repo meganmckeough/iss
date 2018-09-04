@@ -3,16 +3,13 @@ import './App.css';
 import axios from 'axios'
 
 import People from './People'
+import Location from './Location'
 
 class App extends Component {
 
 	state = {
 		myLat: '',
 		myLon: '',
-		latIss: '',
-		lonIss: '',
-		country: '',
-		ocean: '',
 		passGeolocation: '',
 		localTime: ''
 	}
@@ -25,53 +22,6 @@ class App extends Component {
 				myLon: location.coords.longitude
 			})
 		})
-	}
-
-	getCountry = () => {
-		const { latIss, lonIss } = this.state
-
-		const countryUrl = "http://api.geonames.org/timezoneJSON"
-		const oceanUrl = "http://api.geonames.org/oceanJSON"
-		let params = {
-			lat: latIss,
-			lng: lonIss,
-			username: 'megan.mckeough'
-		}
-
-		axios.get(countryUrl, { params })
-			.then(res => {
-				if (res.data.countryName) {
-					this.setState({
-						country: res.data.countryName 
-					})					
-				} 
-			})
-
-		axios.get(oceanUrl, { params })
-			.then(res => {
-				if (res.data.ocean) {
-					this.setState({
-						ocean: res.data.ocean.name
-					})
-				}
-			})
-	}
-
-	getIssPosition = () => {
-		const issUrl = "http://api.open-notify.org/iss-now.json"
-		
-		axios.get(issUrl)
-			.then(res => {
-				this.setState({
-					latIss: res.data.iss_position.latitude,
-					lonIss: res.data.iss_position.longitude
-				})
-				this.getCountry()
-			})
-	}
-
-	handleGetPosition = () => {
-		setInterval(this.getIssPosition, 5000)
 	}
 
 	convertEpochTime = epoch => {
@@ -103,7 +53,7 @@ class App extends Component {
 
   render() {
   	this.getGeolocation()
-  	const { latIss, lonIss, country, ocean, passGeolocation, localTime } = this.state
+  	const { passGeolocation, localTime } = this.state
 	
     return (
    
@@ -111,16 +61,10 @@ class App extends Component {
 
         <h1>Where [over] the world is the ISS?</h1>
 
-        <p>The International Space Station (ISS) orbits this great blue Earth at around 7.66km per second. It orbits the Earth once every 92 minutes.</p>
+        <p>The International Space Station (ISS) orbits this great blue planet at the rate of around 7.66km per second. The ISS orbits the Earth once every 92 minutes.</p>
 
         <People />
-
-        <button onClick={ this.handleGetPosition }>See where it is now!</button>
-        <div>
-        	<p>Latitude: { latIss }</p>
-        	<p>Longitude: { lonIss }</p>
-        	<p>Currently over: { country ? country : ocean }</p>
-        </div>
+		<Location />
 
         <button onClick={ this.getPassTime }>When will it next pass me?</button>
         <div>
