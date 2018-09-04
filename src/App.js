@@ -9,6 +9,7 @@ class App extends Component {
 		lat: '',
 		lon: '',
 		country: '',
+		ocean: '',
 		searchTerm: ''
 	}
 
@@ -24,46 +25,66 @@ class App extends Component {
 	}
 
 	getCountry = () => {
-		//hardcoded for now!!! how can I fix?
-		//trim to one decimal place before putting in params
-		
+		const { lat, lon } = this.state
+
 		const countryUrl = "http://api.geonames.org/timezoneJSON"
-		const params = {
-			lat: this.state.lat,
-			lng: this.state.lon,
+		const oceanUrl = "http://api.geonames.org/oceanJSON"
+		let params = {
+			lat: lat,
+			lng: lon,
 			username: 'megan.mckeough'
 		}
 
 		axios.get(countryUrl, { params })
 			.then(res => {
-				this.setState({
-					country: res.data.countryName 
-				})
+				if (res.data.countryName) {
+					this.setState({
+						country: res.data.countryName 
+					})					
+				} 
+			})
+
+		axios.get(oceanUrl, { params })
+			.then(res => {
+				if (res.data.ocean.name) {
+					this.setState({
+						ocean: res.data.ocean.name
+					})
+				}
 			})
 	}
 
 	getIssPosition = () => {
 		const issUrl = "http://api.open-notify.org/iss-now.json"
 		
-		
 		axios.get(issUrl)
 			.then(res => {
 				this.setState({
-					lat: res.data.iss_position.longitude.toFixed(1),
-					lon: res.data.iss_position.latitude.toFixed(1)
+					lat: res.data.iss_position.latitude,
+					lon: res.data.iss_position.longitude
 				})
+				this.getCountry()
 			})
-
-		getCountry()
 	}
 
-	getPassTime = () => {
-		let sampleUrl = "http://api.open-notify.org/iss-pass.json?lat=37.8&lon=144.9"
+	getPassTime = e => {
+		e.preventDefault()
+		const passUrl = "http://api.open-notify.org/iss-pass.json"
+		let params = {
+			lat: 37.8,
+			lon: 144.9
+		}
+
+		axios.get(passUrl, { params })
+			.then(res => {
+				
+			})
+
 	}
 
 //separate into components later
   render() {
-  	const { people, lat, lon, country } = this.state
+  	const { people, lat, lon, country, ocean } = this.state
 
     return (
    
@@ -81,12 +102,12 @@ class App extends Component {
         <div>
         	<p>Lat: { lat }</p>
         	<p>Lon: { lon }</p>
-        	<p>{ country }</p>
+        	<p>Currently over: { country ? country : ocean }</p>
         </div>
 
-        <form action="">
+        <form action="" onSubmit={ this.getPassTime }>
 			<input type="text"/>
-			<button onSubmit={ this.getPassTime }>search</button>
+			<button>search</button>
         </form>
 
       </div>
