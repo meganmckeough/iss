@@ -6,11 +6,24 @@ class App extends Component {
 
 	state = {
 		people: [],
-		lat: '',
-		lon: '',
+		myLat: '',
+		myLon: '',
+		latIss: '',
+		lonIss: '',
 		country: '',
 		ocean: '',
-		searchTerm: ''
+		passGeolocation: '',
+		localTime: ''
+	}
+
+	getGeolocation = () => {
+
+		navigator.geolocation.getCurrentPosition(location => {
+			this.setState({
+				myLat: location.coords.latitude,
+				myLon: location.coords.longitude
+			})
+		})
 	}
 
 	getPeopleInSpace = () => {
@@ -25,13 +38,13 @@ class App extends Component {
 	}
 
 	getCountry = () => {
-		const { lat, lon } = this.state
+		const { latIss, lonIss } = this.state
 
 		const countryUrl = "http://api.geonames.org/timezoneJSON"
 		const oceanUrl = "http://api.geonames.org/oceanJSON"
 		let params = {
-			lat: lat,
-			lng: lon,
+			lat: latIss,
+			lng: lonIss,
 			username: 'megan.mckeough'
 		}
 
@@ -46,7 +59,7 @@ class App extends Component {
 
 		axios.get(oceanUrl, { params })
 			.then(res => {
-				if (res.data.ocean.name) {
+				if (res.data.ocean) {
 					this.setState({
 						ocean: res.data.ocean.name
 					})
@@ -60,55 +73,76 @@ class App extends Component {
 		axios.get(issUrl)
 			.then(res => {
 				this.setState({
-					lat: res.data.iss_position.latitude,
-					lon: res.data.iss_position.longitude
+					latIss: res.data.iss_position.latitude,
+					lonIss: res.data.iss_position.longitude
 				})
 				this.getCountry()
 			})
 	}
 
+	handleGetPosition = () => {
+		setInterval(this.getIssPosition, 5000)
+	}
+
+	convertEpochTime = epoch => {
+		this.setState({
+			localTime: new Date(epoch * 1000).toString()
+		})
+	}
+
 	getPassTime = e => {
 		e.preventDefault()
-		const passUrl = "http://api.open-notify.org/iss-pass.json"
-		let params = {
-			lat: 37.8,
-			lon: 144.9
+		let { myLat, myLon } = this.state
+
+		const passUrl = "http://localhost:8080/iss-pass"
+		let params = {	
+			lat: myLat,
+			lon: myLon,
+			n: 1
 		}
 
 		axios.get(passUrl, { params })
 			.then(res => {
-				
+				console.log(res)
+				this.setState({
+					passGeolocation: res.data.response[0].risetime
+				})
+				this.convertEpochTime(this.state.passGeolocation)
 			})
 
 	}
 
 //separate into components later
   render() {
-  	const { people, lat, lon, country, ocean } = this.state
+  	this.getGeolocation()
+  	const { people, latIss, lonIss, country, ocean, passGeolocation, localTime } = this.state
+	
 
     return (
    
       <div className="App">
 
-        <h1>ISS</h1>
+        <h1>Where [over] the world is the ISS?</h1>
+
+        <p>The International Space Station (ISS) orbits this great blue Earth at around 7.66km per second. It orbits the Earth once every 92 minutes.</p>
         <button onClick={ this.getPeopleInSpace }>Who's in space?</button>
 
         <div>
         	{ people.map(person => <p key={ person.name }>{ person.name }</p>) }
-       		<div>There are <span> { people.length }</span> people in space right now.</div>
+       		<div>There are <span> { people.length }</span> people on the ISS right now.</div>
         </div>
 
-        <button onClick={ this.getIssPosition }>Where is the ISS?</button>
+        <button onClick={ this.handleGetPosition }>See where it is now!</button>
         <div>
-        	<p>Lat: { lat }</p>
-        	<p>Lon: { lon }</p>
+        	<p>Lat: { latIss }</p>
+        	<p>Lon: { lonIss }</p>
         	<p>Currently over: { country ? country : ocean }</p>
         </div>
 
-        <form action="" onSubmit={ this.getPassTime }>
-			<input type="text"/>
-			<button>search</button>
-        </form>
+        <button onClick={ this.getPassTime }>When will it next pass me?</button>
+        <div>
+        	<p>The ISS will next pass over you on { localTime }</p>
+        </div>
 
       </div>
     );
