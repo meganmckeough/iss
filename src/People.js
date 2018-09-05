@@ -26,7 +26,7 @@ export default class People extends React.Component {
 		const { people } = this.state
 
 		return (
-			<div>
+			<div className="people">
 				<h2>Who's in space?</h2>
 				<div>
 	       			There are currently <span> { people.length }</span> people on the ISS right now.
