@@ -4,76 +4,28 @@ import axios from 'axios'
 
 import People from './People'
 import Location from './Location'
+import NextPass from './NextPass'
 
 class App extends Component {
 
-	state = {
-		myLat: '',
-		myLon: '',
-		passGeolocation: '',
-		localTime: ''
-	}
+	state = {}
 
-	getGeolocation = () => {
+  	render() {
+	    return (
+	   
+	      <div className="App">
 
-		navigator.geolocation.getCurrentPosition(location => {
-			this.setState({
-				myLat: location.coords.latitude,
-				myLon: location.coords.longitude
-			})
-		})
-	}
+	        <h1>Where [over] the world is the ISS?</h1>
 
-	convertEpochTime = epoch => {
-		this.setState({
-			localTime: new Date(epoch * 1000).toString()
-		})
-	}
+	        <p>The International Space Station (ISS) orbits this great blue planet at the rate of around 7.66km per second, around once every 92 minutes.</p>
 
-	getPassTime = e => {
-		e.preventDefault()
-		let { myLat, myLon } = this.state
+	        <People />
+			<Location />
+			<NextPass />
 
-		const passUrl = "http://localhost:8080/iss-pass"
-		let params = {	
-			lat: myLat,
-			lon: myLon,
-			n: 1
-		}
-
-		axios.get(passUrl, { params })
-			.then(res => {
-				this.setState({
-					passGeolocation: res.data.response[0].risetime
-				})
-				this.convertEpochTime(this.state.passGeolocation)
-			})
-
-	}
-
-  render() {
-  	this.getGeolocation()
-  	const { passGeolocation, localTime } = this.state
-	
-    return (
-   
-      <div className="App">
-
-        <h1>Where [over] the world is the ISS?</h1>
-
-        <p>The International Space Station (ISS) orbits this great blue planet at the rate of around 7.66km per second. The ISS orbits the Earth once every 92 minutes.</p>
-
-        <People />
-		<Location />
-
-        <button onClick={ this.getPassTime }>When will it next pass me?</button>
-        <div>
-        	<p>The ISS will next pass over you on { localTime }</p>
-        </div>
-
-      </div>
-    );
-  }
+	      </div>
+	    )
+  	}
 }
 
 export default App;

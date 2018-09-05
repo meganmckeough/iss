@@ -66,7 +66,7 @@ export default class Location extends React.Component {
 
 		return (
 			<div>
-				<h2>The ISS is currently at:</h2>
+				<h2>Where is it right now?</h2>
         		<div>
 		        	<p>Latitude: { latIss }</p>
 		        	<p>Longitude: { lonIss }</p>
