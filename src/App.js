@@ -24,16 +24,18 @@ class App extends Component {
 			<div className="twinkling"></div>
 			<div className="p p-1"></div>
 			<div className="p p-2"></div>
-	
+
+
+			<nav>About</nav>
 	        <h1>Where [over] the world is the ISS?</h1>
-	        <p>The International Space Station (ISS) orbits the Earth at the rate of 7.66km per second, around once every 92 minutes.</p>
+	        <p className="description">The International Space Station (ISS) orbits the Earth at the rate of 7.66km per second, around once every 92 minutes.</p>
 	        <img id="earth" src="../earth2.gif" alt=""/>
 
 			<Location />
 			<NextPass />
 	        <People />
 
-			<footer>Megan McKeough 2018</footer>
+			<footer><a href="https://www.linkedin.com/in/megan-mckeough/" target="_blank">Megan McKeough 2018</a></footer>
 			
 	      </div>
 	    )
