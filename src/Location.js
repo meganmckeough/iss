@@ -73,7 +73,7 @@ export default class Location extends React.Component {
 		        	<p>Latitude: { latIss }</p>
 		        	<p>Longitude: { lonIss }</p>
 		        	<p>Currently over: { country ? country : ocean }</p>
-		        	{ country ? <img src={`https://www.countryflags.io/${ countryCode }/flat/64.png`} alt=""/> : <img src="" alt=""/>}
+		        	{ country ? <img src={`https://www.countryflags.io/${ countryCode }/flat/64.png`} alt=""/> : ocean ? <img className="un" src="../UN.png" alt=""/> : <img src="" alt=""/>}
         		</div>
 			</div>
 		)

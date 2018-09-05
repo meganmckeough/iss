@@ -10,7 +10,13 @@ body {
   width: 30%;
 }
 
-/*neon header font*/
+footer {
+	color: #ffd2e8;
+	animation: neon2 1.5s ease-in-out infinite alternate;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	padding-bottom: 1em;
+}
 
 h1 {
 	text-transform: uppercase;
@@ -21,7 +27,7 @@ h1 {
   	animation: neon1 1.5s ease-in-out infinite alternate;
 }
 
-/*glow*/
+/*neon header glow*/
 
 @keyframes neon1 {
   from {
@@ -32,4 +38,12 @@ h1 {
   }
 }
 
+@keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #ffd2e8, 0 0 20px #ffd2e8, 0 0 30px #ffd2e8, 0 0 40px #c7245e, 0 0 70px #c7245e, 0 0 80px #c7245e, 0 0 100px #c7245e, 0 0 150px #c7245e;
+  }
+  to {
+    text-shadow: 0 0 5px #ffd2e8, 0 0 10px #ffd2e8, 0 0 15px #ffd2e8, 0 0 20px #c7245e, 0 0 35px #c7245e, 0 0 40px #c7245e, 0 0 50px #c7245e, 0 0 75px #c7245e;
+  }
+}
 

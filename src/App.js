@@ -4,12 +4,12 @@ import './Background.css'
 import './People.css'
 import './Location.css'
 import './NextPass.css'
+import './Star.css'
 import axios from 'axios'
 
 import People from './People'
 import Location from './Location'
 import NextPass from './NextPass'
-import Footer from './Footer'
 
 class App extends Component {
 
@@ -22,16 +22,18 @@ class App extends Component {
 			
 			<div className="stars"></div>
 			<div className="twinkling"></div>
+			<div className="p p-1"></div>
+			<div className="p p-2"></div>
 	
 	        <h1>Where [over] the world is the ISS?</h1>
 	        <p>The International Space Station (ISS) orbits the Earth at the rate of 7.66km per second, around once every 92 minutes.</p>
 	        <img id="earth" src="../earth2.gif" alt=""/>
 
-	        <People />
 			<Location />
 			<NextPass />
+	        <People />
 
-			<Footer />
+			<footer>Megan McKeough 2018</footer>
 			
 	      </div>
 	    )
