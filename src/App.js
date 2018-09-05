@@ -16,8 +16,7 @@ class App extends Component {
 	      <div className="App">
 
 	        <h1>Where [over] the world is the ISS?</h1>
-
-	        <p>The International Space Station (ISS) orbits this great blue planet at the rate of around 7.66km per second, around once every 92 minutes.</p>
+	        <p>The International Space Station (ISS) orbits this great blue planet at the rate of 7.66km per second, around once every 92 minutes.</p>
 
 	        <People />
 			<Location />

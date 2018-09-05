@@ -7,6 +7,7 @@ export default class Location extends React.Component {
 		latIss: '',
 		lonIss: '',
 		country: '',
+		countryCode: '',
 		ocean: ''
 	}
 
@@ -29,9 +30,10 @@ export default class Location extends React.Component {
 			.then(res => {
 				if (res.data.countryName) {
 					this.setState({
-						country: res.data.countryName 
+						country: res.data.countryName,
+						countryCode: res.data.countryCode 
 					})					
-				} 
+				}
 			})
 
 		axios.get(oceanUrl, { params })
@@ -62,7 +64,7 @@ export default class Location extends React.Component {
 	}
 
 	render() {
-		const { latIss, lonIss, country, ocean } = this.state
+		const { latIss, lonIss, country, countryCode, ocean } = this.state
 
 		return (
 			<div>
@@ -71,6 +73,7 @@ export default class Location extends React.Component {
 		        	<p>Latitude: { latIss }</p>
 		        	<p>Longitude: { lonIss }</p>
 		        	<p>Currently over: { country ? country : ocean }</p>
+		        	{ country ? <img src={`https://www.countryflags.io/${ countryCode }/flat/64.png`} alt=""/> : <img src="" alt=""/>}
         		</div>
 			</div>
 		)
