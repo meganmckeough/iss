@@ -67,7 +67,7 @@ export default class Location extends React.Component {
 		const { latIss, lonIss, country, countryCode, ocean } = this.state
 
 		return (
-			<div>
+			<div className="location">
 				<h2>Where is it right now?</h2>
         		<div>
 		        	<p>Latitude: { latIss }</p>

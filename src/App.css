@@ -6,6 +6,10 @@ body {
 	font-family: 'Roboto Mono', monospace;
 }
 
+#earth {
+  width: 30%;
+}
+
 /*neon header font*/
 
 h1 {
@@ -13,7 +17,7 @@ h1 {
 	letter-spacing: 0.1em;
 	font-size: 40px;
 	font-family: 'Nunito', sans-serif;
-	color: #fff;
+	color: #c8fefe;
   	animation: neon1 1.5s ease-in-out infinite alternate;
 }
 
@@ -21,10 +25,10 @@ h1 {
 
 @keyframes neon1 {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #24a9f9, 0 0 70px #24a9f9, 0 0 80px #24a9f9, 0 0 100px #24a9f9, 0 0 150px #24a9f9;
+    text-shadow: 0 0 10px #c8fefe, 0 0 20px #c8fefe, 0 0 30px #c8fefe, 0 0 40px #192e9a, 0 0 70px #192e9a, 0 0 80px #192e9a, 0 0 100px #192e9a, 0 0 150px #192e9a;
   }
   to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #24a9f9, 0 0 35px #24a9f9, 0 0 40px #24a9f9, 0 0 50px #24a9f9, 0 0 75px #24a9f9;
+    text-shadow: 0 0 5px #c8fefe, 0 0 10px #c8fefe, 0 0 15px #c8fefe, 0 0 20px #192e9a, 0 0 35px #192e9a, 0 0 40px #192e9a, 0 0 50px #192e9a, 0 0 75px #192e9a;
   }
 }
 

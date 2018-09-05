@@ -42,10 +42,12 @@ export default class Location extends React.Component {
 
 		axios.get(passUrl, { params })
 			.then(res => {
-				this.setState({
-					passGeolocation: res.data.response[0].risetime
-				})
-				this.convertEpochTime(this.state.passGeolocation)
+				if (res.data.response[0]) {
+					this.setState({
+						passGeolocation: res.data.response[0].risetime
+					})
+					this.convertEpochTime(this.state.passGeolocation)
+				}
 			})
 
 	}
@@ -54,10 +56,10 @@ export default class Location extends React.Component {
 		const { passGeolocation, localTime } = this.state
 
 		return (
-			<div>
+			<div className="next-pass">
 				<h2>When will it next pass me?</h2>
 		        <div>
-		        	<p>The ISS will pass over your location on { localTime }</p>
+		        	<p>{ localTime ? `The ISS will pass over your location on ${ localTime }` : "The ISS is near your location right now!!" }</p>
 		        </div>
 	        </div>
 		)
