@@ -13,8 +13,7 @@ import People from './People'
 import Location from './Location'
 import NextPass from './NextPass'
 import Distance from './Distance'
-import { Sidebar, hideSidebar } from './Sidebar'
-// import Sidebar from './Sidebar'
+import Sidebar from './Sidebar'
 
 class App extends Component {
 
@@ -28,6 +27,10 @@ class App extends Component {
 			sidebarClass: 'show'
 		})
 	}
+
+	hideSidebar = () => {
+			
+	}
 		
 	render() {
 	    return (
@@ -39,7 +42,7 @@ class App extends Component {
 				<div className="p p-1"></div>
 				<div className="p p-2"></div>
 
-				<Sidebar className={ this.state.sidebarClass }/>
+				<Sidebar hidebar={ this.hideSidebar} className={ this.state.sidebarClass }/>
 				
 				<nav>
 					<a onClick={ this.showSidebar } href="#">About</a>
