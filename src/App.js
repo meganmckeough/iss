@@ -6,12 +6,14 @@ import './Location.css'
 import './NextPass.css'
 import './Star.css'
 import './Distance.css'
+import './Sidebar.css'
 import axios from 'axios'
 
 import People from './People'
 import Location from './Location'
 import NextPass from './NextPass'
 import Distance from './Distance'
+import Sidebar from './Sidebar'
 
 class App extends Component {
 
@@ -21,6 +23,8 @@ class App extends Component {
 	    return (
 	   
 	      	<div className="App">
+
+	      		<Sidebar />
 			
 				<div className="stars"></div>
 				<div className="twinkling"></div>
