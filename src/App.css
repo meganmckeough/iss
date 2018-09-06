@@ -24,6 +24,11 @@ body {
 	flex-direction: column;
 }
 
+nav {
+	z-index: 1;
+	position: relative;
+}
+
 footer a {
 	color: #ffd2e8;
 	animation: neon2 1.5s ease-in-out infinite alternate;

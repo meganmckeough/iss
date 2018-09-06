@@ -13,26 +13,38 @@ import People from './People'
 import Location from './Location'
 import NextPass from './NextPass'
 import Distance from './Distance'
+// import { Sidebar, hideSidebar } from './Sidebar'
 import Sidebar from './Sidebar'
 
 class App extends Component {
 
-	state = {}
+	state = {
+		sidebarClass: ''
+	}
+
+	showSidebar = (event) => {
+		event.preventDefault()
+		this.setState({
+			sidebarClass: 'show'
+		})
+	}
 		
 	render() {
 	    return (
 	   
 	      	<div className="App">
-
-	      		<Sidebar />
 			
 				<div className="stars"></div>
 				<div className="twinkling"></div>
 				<div className="p p-1"></div>
 				<div className="p p-2"></div>
 
+				<Sidebar className={ this.state.sidebarClass }/>
+				
+				<nav>
+					<a onClick={ this.showSidebar } href="#">About</a>
+				</nav>
 
-				<nav>About</nav>
 		        <h1>Where [over] the world is the ISS?</h1>
 		        <p className="description">The International Space Station (ISS) orbits the Earth at the rate of 7.66km per second, around once every 92 minutes.</p>
 		        <Distance />

@@ -2,10 +2,16 @@
 	z-index: 1;
 	width: 50%;
 	height: 50%;
-	background-color: rgba(36, 169, 249, 0.9);
+	background-color: rgba(36, 169, 249, 0.95);
 	color: black;
 	position: absolute;
 	top: 0;
 	right: 0;
 	opacity: 0;
+	border: solid black 2px;
+}
+
+.show {
+	opacity: 1;
+	z-index: 2;
 }
