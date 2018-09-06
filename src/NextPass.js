@@ -7,11 +7,13 @@ export default class Location extends React.Component {
 		myLat: '',
 		myLon: '',
 		passGeolocation: '',
-		localTime: ''
+		localTime: '',
+		currentTime: ''
 	}
 
 	componentWillMount = () => {
 		this.getGeolocation()
+		setInterval(this.showTime, 1000)
 	}
 
 	getGeolocation = () => {
@@ -21,6 +23,13 @@ export default class Location extends React.Component {
 				myLon: location.coords.longitude
 			})
 			this.getPassTime(location.coords)
+		})
+	}
+
+	showTime = () => {
+		let now = new Date()
+		this.setState({
+			currentTime: now.toLocaleTimeString()
 		})
 	}
 
@@ -54,13 +63,14 @@ export default class Location extends React.Component {
 	}
 
 	render() {
-		const { passGeolocation, localTime } = this.state
+		const { passGeolocation, localTime, currentTime } = this.state
 
 		return (
 			passGeolocation ?
 				<div className="next-pass">
 					<h2>When will it next pass me?</h2>
 			        <div>
+			        	<p>Current time: { currentTime }</p>
 			        	<p>{ localTime ? `The ISS will pass over your location on ${ localTime }` : "The ISS is near your location right now!!" }</p>
 			        </div>
 		        </div>
