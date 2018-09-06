@@ -31,7 +31,7 @@ class App extends Component {
 	hideSidebar = (event) => {
 		event.preventDefault()
 		this.setState({
-			sidebarClass: ''
+			sidebarClass: 'hide'
 		})
 	}
 		

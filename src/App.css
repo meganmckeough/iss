@@ -31,14 +31,6 @@ nav {
 	padding: 1em;
 }
 
-nav a {
-	transition: 0.2s;
-}
-
-nav a:hover {
-	animation: neon1 1s linear infinite;
-}
-
 footer a {
 	color: #ffd2e8;
 	animation: neon2 1.5s ease-in-out infinite alternate;

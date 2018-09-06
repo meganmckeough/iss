@@ -1,24 +1,50 @@
 .sidebar {
 	z-index: 1;
-	width: 0%;
-	height: 50%;
+	height: 70%;
 	background-color: rgba(199, 36, 94, 0.95);
 	color: white;
 	position: absolute;
 	top: 0;
 	right: 0;
 	opacity: 0;
-	border: solid white 2px;
-	transition: 0.5s ease-out;
+	border: solid white 1.5px;
 }
 
 .show {
-	width: 50%;
+	width: 70%;
 	opacity: 1;
 	z-index: 2;
-	transition: 0.5s ease-out;
+	animation: show-bar;
+	animation-duration: 0.5s;
+}
+
+.hide {
+	width: 0%;
+	opacity: 1;
+	z-index: 2;
+	animation: hide-bar;
+	animation-duration: 0.2s;
+}
+
+.hide p,
+.hide img {
+	opacity: 0;
 }
 
 .about {
 	padding: 2em;
+}
+
+.cute {
+	width: 15%;
+}
+
+@keyframes show-bar {	
+	0% { width: 0%; }
+	100% { width: 70%; }
+}
+
+@keyframes hide-bar {
+	0% { width: 70%; }
+	100% { width: 0%; }
 }

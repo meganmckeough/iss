@@ -35,7 +35,7 @@ export default class Location extends React.Component {
 		
 		const passUrl = "http://localhost:8080/iss-pass"
 		// const passUrl = "https://vast-harbor-27818.herokuapp.com/iss-pass"
-		
+
 		let params = {	
 			lat: latitude,
 			lon: longitude,
@@ -51,14 +51,13 @@ export default class Location extends React.Component {
 					this.convertEpochTime(this.state.passGeolocation)
 				}
 			})
-
 	}
 
 	render() {
 		const { passGeolocation, localTime } = this.state
 
 		return (
-			passGeolocation && localTime ?
+			passGeolocation ?
 				<div className="next-pass">
 					<h2>When will it next pass me?</h2>
 			        <div>
@@ -68,9 +67,5 @@ export default class Location extends React.Component {
 			: 
 				<div className="next-pass loading"><img id="loader" src="../loader.gif" alt=""/>loading... </div> 
 		)
-		
 	}
-
-		
-
 }
