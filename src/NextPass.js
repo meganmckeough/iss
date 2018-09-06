@@ -33,7 +33,7 @@ export default class Location extends React.Component {
 	getPassTime = (coords) => {
 		let { latitude, longitude } = coords
 
-		const passUrl = "http://localhost:8080/iss-pass"
+		const passUrl = "https://vast-harbor-27818.herokuapp.com/iss-pass"
 		let params = {	
 			lat: latitude,
 			lon: longitude,
