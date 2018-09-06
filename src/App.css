@@ -27,6 +27,16 @@ body {
 nav {
 	z-index: 1;
 	position: relative;
+	text-align: right;
+	padding: 1em;
+}
+
+nav a {
+	transition: 0.2s;
+}
+
+nav a:hover {
+	animation: neon1 1s linear infinite;
 }
 
 footer a {
@@ -44,11 +54,6 @@ h1 {
 	font-family: 'Nunito', sans-serif;
 	color: #c8fefe;
   	animation: neon1 1.5s ease-in-out infinite alternate;
-}
-
-nav {
-	text-align: right;
-	padding: 1em;
 }
 
 /*neon header glow*/

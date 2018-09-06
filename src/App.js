@@ -28,8 +28,11 @@ class App extends Component {
 		})
 	}
 
-	hideSidebar = () => {
-			
+	hideSidebar = (event) => {
+		event.preventDefault()
+		this.setState({
+			sidebarClass: ''
+		})
 	}
 		
 	render() {
