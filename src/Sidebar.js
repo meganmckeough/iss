@@ -13,7 +13,7 @@ export default class Sidebar extends React.Component {
 				<p>Big thanks to <a href="https://generalassemb.ly/education/web-development-immersive" target="_blank">General Assembly</a>; and long live WDI16.</p> 
 
 				<p>2018</p>
-				<img className="cute" src="../cute.gif_c200" alt=""/>
+				<img className="cute" src="cute.gif_c200" alt=""/>
 			</div>
 		)
 	}

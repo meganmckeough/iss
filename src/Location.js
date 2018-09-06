@@ -78,13 +78,13 @@ export default class Location extends React.Component {
 			        	
 			        	<p>Currently over: { country ? country : ocean }</p>
 
-			        	{ country ? <img src={`https://www.countryflags.io/${ countryCode }/flat/64.png`} alt=""/> : ocean ? <img className="un" src="../UN.png" alt=""/> : <img src="" alt=""/>}
+			        	{ country ? <img src={`https://www.countryflags.io/${ countryCode }/flat/64.png`} alt=""/> : ocean ? <img className="un" src="UN.png" alt=""/> : <img src="" alt=""/>}
 
 			        	{ country || ocean ? <p><a href={ `https://www.google.com/maps/?q=${latIss},${lonIss}` } target="_blank">(...Where exactly?)</a></p> : <div></div>}
 	        		</div>
 				</div>
 			: 
-				<div className="location loading"><img id="loader" src="../loader.gif" alt=""/>loading... </div> 
+				<div className="location loading"><img id="loader" src="loader.gif" alt=""/>loading... </div> 
 		)
 	}
 }

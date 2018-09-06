@@ -75,7 +75,7 @@ export default class Location extends React.Component {
 			        </div>
 		        </div>
 			: 
-				<div className="next-pass loading"><img id="loader" src="../loader.gif" alt=""/>loading... </div> 
+				<div className="next-pass loading"><img id="loader" src="loader.gif" alt=""/>loading... </div> 
 		)
 	}
 }

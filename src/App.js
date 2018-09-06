@@ -58,7 +58,7 @@ class App extends Component {
 				<Location />
 				<NextPass />
 		        <People />
-		        <img id="earth" src="../earth.gif" alt=""/>
+		        <img id="earth" src="earth.gif" alt=""/>
 
 				<footer>
 					<a href="https://www.linkedin.com/in/megan-mckeough/" target="_blank">Megan McKeough 2018</a>

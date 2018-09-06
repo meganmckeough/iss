@@ -32,7 +32,7 @@ export default class People extends React.Component {
 					<h2>Who's in space?</h2>
 					<div>
 						{ people.map(person => 
-							<img className="astro" src="../astronaut.png" alt=""/>
+							<img className="astro" src="astronaut.png" alt=""/>
 						) }
 		       			
 		       			<p>There are currently <span> { people.length }</span> people on the ISS right now.</p>
@@ -45,7 +45,7 @@ export default class People extends React.Component {
 			        </div>
 			    </div>
 			:
-				<div className="people loading"><img id="loader" src="../loader.gif" alt=""/>loading... </div>
+				<div className="people loading"><img id="loader" src="loader.gif" alt=""/>loading... </div>
 		)
 	}
 }
