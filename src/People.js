@@ -12,7 +12,7 @@ export default class People extends React.Component {
 	}
 
 	getPeopleInSpace = () => {
-		const url = "http://api.open-notify.org/astros.json"
+		const url = "https://api.open-notify.org/astros.json"
 
 		axios.get(url)
 			.then(res => {

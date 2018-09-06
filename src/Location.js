@@ -18,8 +18,8 @@ export default class Location extends React.Component {
 	getCountry = () => {
 		const { latIss, lonIss } = this.state
 
-		const countryUrl = "http://api.geonames.org/timezoneJSON"
-		const oceanUrl = "http://api.geonames.org/oceanJSON"
+		const countryUrl = "https://api.geonames.org/timezoneJSON"
+		const oceanUrl = "https://api.geonames.org/oceanJSON"
 		let params = {
 			lat: latIss,
 			lng: lonIss,
@@ -47,7 +47,7 @@ export default class Location extends React.Component {
 	}
 
 	getIssPosition = () => {
-		const issUrl = "http://api.open-notify.org/iss-now.json"
+		const issUrl = "https://api.open-notify.org/iss-now.json"
 		
 		axios.get(issUrl)
 			.then(res => {
