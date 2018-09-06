@@ -13,8 +13,8 @@ import People from './People'
 import Location from './Location'
 import NextPass from './NextPass'
 import Distance from './Distance'
-// import { Sidebar, hideSidebar } from './Sidebar'
-import Sidebar from './Sidebar'
+import { Sidebar, hideSidebar } from './Sidebar'
+// import Sidebar from './Sidebar'
 
 class App extends Component {
 
