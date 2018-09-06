@@ -26,22 +26,26 @@ export default class People extends React.Component {
 		const { people } = this.state
 
 		return (
-			<div className="people">
-				<h2>Who's in space?</h2>
-				<div>
-					{ people.map(person => 
-						<img className="astro" src="../astronaut.png" alt=""/>
-					) }
-	       			
-	       			<p>There are currently <span> { people.length }</span> people on the ISS right now.</p>
-	       		</div>
+			
+			people ? 
+				<div className="people">
+					<h2>Who's in space?</h2>
+					<div>
+						{ people.map(person => 
+							<img className="astro" src="../astronaut.png" alt=""/>
+						) }
+		       			
+		       			<p>There are currently <span> { people.length }</span> people on the ISS right now.</p>
+		       		</div>
 
-		        <div>
-		        	{ people.map(person => 
-		        		<p key={ person.name }>{ person.name }</p>
-		        	) }
-		        </div>
-		    </div>
+			        <div>
+			        	{ people.map(person => 
+			        		<p key={ person.name }>{ person.name }</p>
+			        	) }
+			        </div>
+			    </div>
+			:
+				<div className="people loading"><img id="loader" src="../loader.gif" alt=""/>loading... </div>
 		)
 	}
 }

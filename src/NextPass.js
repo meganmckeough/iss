@@ -56,13 +56,19 @@ export default class Location extends React.Component {
 		const { passGeolocation, localTime } = this.state
 
 		return (
-			<div className="next-pass">
-				<h2>When will it next pass me?</h2>
-		        <div>
-		        	<p>{ localTime ? `The ISS will pass over your location on ${ localTime }` : "The ISS is near your location right now!!" }</p>
+			passGeolocation && localTime ?
+				<div className="next-pass">
+					<h2>When will it next pass me?</h2>
+			        <div>
+			        	<p>{ localTime ? `The ISS will pass over your location on ${ localTime }` : "The ISS is near your location right now!!" }</p>
+			        </div>
 		        </div>
-	        </div>
+			: 
+				<div className="next-pass loading"><img id="loader" src="../loader.gif" alt=""/>loading... </div> 
 		)
+		
 	}
+
+		
 
 }
