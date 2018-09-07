@@ -47,7 +47,7 @@ export default class Location extends React.Component {
 	}
 
 	getIssPosition = () => {
-		const issUrl = "https://api.open-notify.org/iss-now.json"
+		const issUrl = "https://vast-harbor-27818.herokuapp.com/iss-now"
 		
 		axios.get(issUrl)
 			.then(res => {
