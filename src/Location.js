@@ -18,8 +18,8 @@ export default class Location extends React.Component {
 	getCountry = () => {
 		const { latIss, lonIss } = this.state
 
-		const countryUrl = "https://api.geonames.org/timezoneJSON"
-		const oceanUrl = "https://api.geonames.org/oceanJSON"
+		const countryUrl = "https://vast-harbor-27818.herokuapp.com/timezone"
+		const oceanUrl = "https://vast-harbor-27818.herokuapp.com/ocean"
 		let params = {
 			lat: latIss,
 			lng: lonIss,
