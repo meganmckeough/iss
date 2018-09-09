@@ -2,7 +2,7 @@
 
 ## A project to track the ISS, practise React, and have fun with APIs.
 
-Try it and track the ISS now!
+[Try it](https://meganmckeough.github.io/iss/) and track the ISS now!
 
 ### What is it?
 
